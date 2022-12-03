@@ -163,6 +163,7 @@ public class Main {
         System.out.println();                                           	//12
 
 
+
         int g = 1;
         for (int i = 1; i <= 10; i++)
         {
