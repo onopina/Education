@@ -67,18 +67,18 @@ public class Main {
 
 
 
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter a number from 1 to 100: ");
-            int num = scanner.nextInt();
-            int[]arr5 = new int[num];
-            System.out.println();
-
-            for(int i=0; i<arr5.length; i++){
-                arr5[i] = i;
-                System.out.print(arr5[i]);
-             }
-
-             System.out.println();                                              //5
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.print("Enter a number from 1 to 100: ");
+//            int num = scanner.nextInt();
+//            int[]arr5 = new int[num];
+//            System.out.println();
+//
+//            for(int i=0; i<arr5.length; i++){
+//                arr5[i] = i;
+//                System.out.print(arr5[i]);
+//             }
+//
+//             System.out.println();                                              //5
 
 
 
@@ -94,22 +94,33 @@ public class Main {
 
 
 
-            int[]arr7 = new int[5];
+            int[]arr7 = {1, 3, 5, 7, 9};
+            int[]mirror = new int[arr7.length];
 
-            for(int i=0; i<arr7.length; i++){
-                arr7[i] = i+1;
-                System.out.print(arr7[i]);
+            for(int i=arr7.length-1; i>=0;i--){
+                for(int j=0; j<mirror.length; j++) {
+                    mirror[j] = arr7[i];
+                    i--;
+                }
             }
-            System.out.println();
-
-            for(int i=arr7.length-1; i>=0; i--){
-                System.out.print(arr7[i]);
-            }
+            System.out.print(Arrays.toString(mirror));
 
             System.out.println();                                               //7
 
 
 
+            int[]arr8 = {1, 3, 5, 7, 9};
+            for(int i=0; i<arr8.length/2;i++){
+                int x = arr8[arr8.length-1-i];
+                arr8[arr8.length-1-i] = arr8[i];
+                arr8[i] = x;
+            }
+            System.out.print(Arrays.toString(arr8));
+
+            System.out.println();                                               //8
+
+
+            
             Scanner scanner9 = new Scanner(System.in);
             System.out.print("Enter a number from 1 to 100: ");
             int num9 = scanner9.nextInt();
@@ -170,8 +181,7 @@ public class Main {
                 }
                 else if (count > result) {
                     result = count;
-                }
-                else {
+                } else {
                     count = 0;
                 }
             }
@@ -237,6 +247,6 @@ public class Main {
             System.out.println("The sum of the numbers in the last column is " + sum_last_column);
 
             System.out.println();                                            //16
-            
+
         }
 }
