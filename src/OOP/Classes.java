@@ -1,8 +1,5 @@
 package OOP;
 
-import java.util.Scanner;
-import java.util.Arrays;
-
 public class Classes {
     public static void main(String[] args) {
         Person person = new Person();
