@@ -1,7 +1,5 @@
 package MathUtils_7;
 
-import static MathUtils_7.MathUtils.sumArray;
-
 public class Main {
     public static void main(String[] args) {
 
