@@ -49,18 +49,19 @@ public class MathUtils {
         return count;
     }                                                                             //7.2.4
 
-    public static double doubleToInt(double num) {
+    public static int doubleToInt(double num) {
+        int result = 0;
         for(int i=0; i<1000000; i++) {
             if (num > i && num < (i+1))
-                num = i;
+                result = i;
         }
-        return num;
-    }    // знаю, что пребразовала в double (надо написать логику или...? ниже в int)    //7.2.5
+        return result;
+    }                                                                             //7.2.5
 
-    public static int doubleToInt1(double num) {
-        int i = (int) num;
-        return i;
-    }
+//    public static int doubleToInt1(double num) {
+//        int i = (int) num;
+//        return i;
+//    }
 
     public static int Formula(int x) {
         int result = x*x + x + 1;
