@@ -51,9 +51,12 @@ public class MathUtils {
 
     public static int doubleToInt(double num) {
         int result = 0;
-        for(int i=0; i<1000000; i++) {
-            if (num > i && num < (i+1))
+        for(int i=-1000000; i<1000000; i++) {
+
+            if (num > 0 && num > i && num < (i+1))
                 result = i;
+            if (num < 0 && num > i && num < (i+1))
+                result = i+1;
         }
         return result;
     }                                                                             //7.2.5
