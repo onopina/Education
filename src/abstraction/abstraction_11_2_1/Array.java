@@ -17,10 +17,6 @@ public class Array implements Service {
         for(int i=0; i<size; i++){
             array[i] = scanner.nextInt();
         }
-        int []array1 = new int[size];
-        for(int i=0; i<size; i++){
-            array1[i] = array[i];
-        }
         return array;
     }
 
@@ -28,6 +24,5 @@ public class Array implements Service {
     public void makeString() {
         System.out.println(Arrays.toString(array));
     }
-
-
+    
 }

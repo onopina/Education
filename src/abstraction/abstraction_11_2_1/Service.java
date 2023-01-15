@@ -6,5 +6,4 @@ public interface Service {
     void makeString();
 
 
-
 }
