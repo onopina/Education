@@ -5,7 +5,6 @@ public interface Service {
 
     void makeString();
 
-   // int clear();
-
+    void clear();
 
 }

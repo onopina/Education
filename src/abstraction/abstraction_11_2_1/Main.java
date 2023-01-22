@@ -5,8 +5,8 @@ public class Main {
         Array array = new Array();
         array.create();
         array.makeString();
-
-
+        array.clear();
+        array.makeString();
 
     }
 }
