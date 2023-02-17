@@ -290,7 +290,7 @@ public class Game {
                 int coordinateX = random.nextInt(SIZE);
                 int coordinateY = random.nextInt(SIZE);
                 if (gameField[coordinateX][coordinateY] == null) {
-                    gameField[coordinateX][coordinateY] = new Herbivore();  //Хищник размножился
+                    gameField[coordinateX][coordinateY] = new Herbivore();  //Травоядное размножилось
                     newHerbivore--;
                     System.out.println("+1 new Herbivore " + gameField[coordinateX][coordinateY] + "[" + coordinateX + ";" + coordinateY + "] on the field");
                     totalHerbivores++;
@@ -298,6 +298,5 @@ public class Game {
             }
         }
     }
-
 
 }
