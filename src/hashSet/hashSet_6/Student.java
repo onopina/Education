@@ -5,11 +5,15 @@ import java.util.Objects;
 public class Student {
     private String name;
     private int age;
-    public int course;  //намеренно public, чтобы получить ошибку
+    private int course;
 
     public Student(String name, int age, int course) {
         this.name = name;
         this.age = age;
+        this.course = course;
+    }
+
+    public void setCourse(int course) {
         this.course = course;
     }
 
