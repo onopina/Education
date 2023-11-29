@@ -1,0 +1,4 @@
+name gender age 
+Maria Female 25 
+Michael Male 27 
+Irina Female 23 

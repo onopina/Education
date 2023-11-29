@@ -1,0 +1,4 @@
+Name Gender Animal
+Maria Female Cat
+Michael Male Dog
+Irina Female Fish
