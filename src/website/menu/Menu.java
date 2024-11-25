@@ -19,7 +19,7 @@ public class Menu {
     private void showMenu(){
         System.out.println("""
                 MENU:
-                1 - To register a new User 
+                1 - To register a new User
                 2 - To get info by ID (only for Administrator)
                 3 - To get a list of Customers (only for Administrator)
                 4 - To get a list of Suppliers (only for Administrator)

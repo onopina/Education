@@ -1,4 +1,4 @@
-package inheritance_9_2_3;
+package inheritance_9.inheritance_9_2_3;
 
 public class Currency {
     

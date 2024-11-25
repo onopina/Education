@@ -1,4 +1,4 @@
-package inheritance_9_2_2;
+package inheritance_9.inheritance_9_2_2;
 
 public class Circle extends Figure {
     
@@ -8,8 +8,8 @@ public class Circle extends Figure {
         super(color);
         this.radius = radius;
     }
-    
-    public double area() {
+
+    public double getArea() {
         return Math.PI*radius*radius;
     }
     

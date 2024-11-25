@@ -1,4 +1,4 @@
-package inheritance_9_2_2;
+package inheritance_9.inheritance_9_2_2;
 
 public class Square extends Figure {
     
@@ -9,7 +9,7 @@ public class Square extends Figure {
         this.side = side;
     }
     
-    public double area() {
+    public double getArea() {
         return side*side;
     }
     

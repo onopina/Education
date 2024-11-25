@@ -1,9 +1,5 @@
 package string_11.string_11_2;
 
-/**
- * 2.	Дана строка вида: «filename.exe». Имя файла может быть любой длины, расширение – тоже.
- * Разбить на две строки – имя, расширение.
- */
 public class Utils {
     public void splitFilename(String filename){
         int index = filename.indexOf('.');

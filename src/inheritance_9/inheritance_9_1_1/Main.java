@@ -1,7 +1,14 @@
-package inheritance_9_1_1;
+package inheritance_9.inheritance_9_1_1;
 
-public class Main
-{
+/**
+ * Часть 1:
+ * 1.	Реализовать наследование классов: Employee, Doctor, Programmer.
+ * 2.	 В Employee добавить два поля. В Doctor и Programmer добавить по одному собственному полю.
+ * 3.	Добавить геттеры и сеттеры для всех полей.
+ * 4.	Добавить в Employee метод, который выводит на консоль название класса.
+ *  Переопределить данную логику в дочерних классах.
+ */
+public class Main {
 	public static void main(String[] args) {
 		
 		Employee employee1 = new Employee();

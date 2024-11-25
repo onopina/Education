@@ -1,4 +1,4 @@
-package inheritance_9_2_2;
+package inheritance_9.inheritance_9_2_2;
 
 public class Figure {
    
@@ -8,7 +8,7 @@ public class Figure {
         this.color = color;
     }
     
-    public double area() {
+    public double getArea() {
         return 0;
     }
     

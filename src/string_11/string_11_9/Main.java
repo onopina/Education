@@ -1,5 +1,8 @@
 package string_11.string_11_9;
 
+/**
+ * 9.	Подсчитать количество вхождений символа в строку (например, «1»).
+ */
 public class Main {
     public static void main(String[] args) {
         Utils utils = new Utils();

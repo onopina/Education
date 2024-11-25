@@ -1,4 +1,4 @@
-package inheritance_9_1_1;
+package inheritance_9.inheritance_9_1_1;
 
 public class Programmer extends Employee {
     

@@ -4,34 +4,47 @@ import java.util.Random;
 
 public class Game {
 
-    public static final int SIZE = 25;
+    public static final int SIZE = 10;
     private Object[][]gameField = new Object[SIZE][SIZE];
-    private int totalPredators = 5;
-    private int totalHerbivores = 5;
-    private int totalMeat = 5;
-    private int totalGrass = 5;
-    private int amountFood = 5;  //одновременное кол-во экземпляров каждого вида еды на поле
+    private int totalPredators = 3;
+    private int totalHerbivores = 3;
+    private int totalMeat = 3;
+    private int totalGrass = 3;
+    private int amountFood = 3;  //одновременное кол-во экземпляров каждого вида еды на поле
     private int counter = 0;  //счетчик ходов
     private int countStepsWithoutFood = 2;  //кол-во ходов без еды до гибели
     private int countStepsPredator = 0;  //кол-во ходов Хищника без еды
     private int countStepsHerbivore = 0;  //кол-во ходов Травоядного без еды
 
-    private boolean inGame = true;
+ //   private boolean inGame = true;
 
     public void start(){
         createObjects();
         drawField();
         showCoordinates();
-        while (inGame()) {
+
+        while (!checkEndGame()) {
+
             nextMove();
+            replaceFood();
+            endDay();
+         //   drawField();
+
         }
     }
-    private boolean inGame(){
-        if (counter>=100) {
-            return false;
+    private boolean checkEndGame(){
+        if (totalPredators<=0) {
+            System.out.println("Herbivores won!");
+            return true;
         }
-        else return true;
+        if  (totalHerbivores<=0) {
+            System.out.println("Predators won!");
+            return true;
+        }
+        return false;
     }
+
+
     private void createObjects(){
         createPredators();
         createHerbivores();
@@ -122,15 +135,13 @@ public class Game {
     private void nextMove(){
         for (int i = 0; i < gameField.length; i++) {
             for (int j = 0; j < gameField[i].length; j++) {
-                if (counter>=100){
-                    break;
-                }
-                if (gameField[i][j] instanceof Animal) {
-                        if (!checkEat(i, j)) {
+
+                if (gameField[i][j] instanceof Animal && !((Animal) gameField[i][j]).isTiredness() ) {
+                        if (!checkEat(i, j)) {   //если не поело
                             doStep(i, j);
-                            replaceFood();
-                        } else {
-                            replaceFood();
+
+                        } else {   //если поело
+
                         }
                         drawField();
                         counter++;
@@ -149,7 +160,8 @@ public class Game {
                     gameField[x][y] = gameField[i][j];
                     gameField[i][j] = null;
                     System.out.println("The Predator " + gameField[x][y] + "[" + x + ";" + y + "] is full");
-                    countStepsPredator=0;  //обнулить кол-во ходов без еды
+                    ((Animal)gameField[x][y]).full();
+                    ((Animal)gameField[x][y]).setTiredness(true);
                     reproducePredator();
                     return true;
                 }
@@ -157,7 +169,8 @@ public class Game {
                     gameField[x][y] = gameField[i][j];
                     gameField[i][j] = null;
                     System.out.println("The Herbivore " + gameField[x][y] + "[" + x + ";" + y + "] is full");
-                    countStepsHerbivore=0;  //обнулить кол-во ходов без еды
+                    ((Animal)gameField[x][y]).full();
+                    ((Animal)gameField[x][y]).setTiredness(true);
                     reproduceHerbivore();
                     return true;
                 }
@@ -165,20 +178,21 @@ public class Game {
                     gameField[x][y] = gameField[i][j];
                     gameField[i][j] = null;
                     System.out.println("The Predator " + gameField[x][y] + "[" + x + ";" + y + "] is full");
-                    countStepsPredator=0;  //обнулить кол-во ходов без еды
                     totalHerbivores--;
+                    ((Animal)gameField[x][y]).full();
+                    ((Animal)gameField[x][y]).setTiredness(true);
                     reproducePredator();
                     return true;
                 }
-
             }
         }
         return false;
     }
 
     private void doStep(int i, int j) {
-        Random random = new Random();
+        ((Animal)gameField[i][j]).hungry();
 
+        Random random = new Random();
         while (true) {
             int x = random.nextInt(i-1, i+2);  //value between the specified origin (inclusive) and the specified bound (exclusive)
             int y = random.nextInt(j-1, j+2);
@@ -191,24 +205,16 @@ public class Game {
                 gameField[i][j] = null;
 
                 if (gameField[x][y] instanceof Predator) {  //Как здесь считать ходы без еды конкретного Хищника? А не любого Хищника
-                    countStepsPredator++;
-                    System.out.println("The Predator " + gameField[x][y] + "[" + i + ";" + j + "] moved to " + "[" + x + ";" + y + "]. The number of his steps without food is " + countStepsPredator);
-                    if (countStepsPredator==countStepsWithoutFood){
-                        gameField[x][y] = null;
-                        System.out.println("This Predator died");
-                        totalPredators--;
-                        countStepsPredator=0;
-                    }
+                    System.out.println("The Predator " + gameField[x][y] + "[" + i + ";" + j + "] moved to " + "[" + x + ";" + y + "]");
+//                    if (countStepsPredator==countStepsWithoutFood){
+//                        gameField[x][y] = null;
+//                        System.out.println("This Predator died");
+//                        totalPredators--;
+//                        countStepsPredator=0;
+//                    }
                 }
                 if (gameField[x][y] instanceof Herbivore) {
-                    countStepsHerbivore++;
-                    System.out.println("The Herbivore " + gameField[x][y] + "[" + i + ";" + j + "] moved to " + "[" + x + ";" + y + "]. The number of steps without food is " + countStepsHerbivore);
-                    if (countStepsHerbivore==countStepsWithoutFood){
-                        gameField[x][y] = null;
-                        System.out.println("This Herbivore died");
-                        totalHerbivores--;
-                        countStepsHerbivore=0;
-                    }
+                    System.out.println("The Herbivore " + gameField[x][y] + "[" + i + ";" + j + "] moved to " + "[" + x + ";" + y + "]");
                 }
                 break;
             }
@@ -261,7 +267,6 @@ public class Game {
             }
         }
     }
-
     private int chanceReproduction(){
         Random random = new Random();
         return random.nextInt(2);  //0 или 1
@@ -298,5 +303,28 @@ public class Game {
             }
         }
     }
+
+    private void endDay(){
+        for (int i = 0; i < gameField.length; i++) {
+            for (int j = 0; j < gameField[i].length; j++) {
+                if (gameField[i][j] instanceof Animal){
+                    if (((Animal)gameField[i][j]).checkDeath()){
+                        if (gameField[i][j] instanceof Predator) {
+                            totalPredators--;
+                        }
+                        if (gameField[i][j] instanceof Herbivore) {
+                            totalHerbivores--;
+                        }
+                        gameField[i][j] = null;
+                    }
+                    else {
+                        ((Animal) gameField[i][j]).recuperation();
+                    }
+                }
+            }
+        }
+    }
+
+
 
 }

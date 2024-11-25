@@ -1,4 +1,4 @@
-package inheritance_9_2_1;
+package inheritance_9.inheritance_9_2_1;
 
 public class Employee {
     

@@ -1,9 +1,8 @@
-package This_6;
+package this_6;
 
 public class Main {
     public static void main(String[] args) {
 
-        //Перегрузка. Слово This
         Calculator calc = new Calculator();
         int addTwoNumbers = calc.add(5, 3);
         System.out.println("The sum of two numbers is " + addTwoNumbers);

@@ -1,0 +1,8 @@
+package polymorphism_12.polymorphism_12_2_3;
+
+public class Formula2 implements Polinomial{
+    @Override
+    public void evaluate(int x) {
+        System.out.println("The result is " + (x*x + x + 1));
+    }
+}

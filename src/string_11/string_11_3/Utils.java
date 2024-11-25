@@ -1,9 +1,5 @@
 package string_11.string_11_3;
 
-/**
- * 3.	Дан массив имен файлов. Создать новый массив, содержащий файлы с расширением txt
- * (файлы с другими расширения не нужны).
- */
 public class Utils {
     public void selectTxtFiles(String[] files){
         int size = 0;

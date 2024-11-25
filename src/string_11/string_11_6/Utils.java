@@ -1,10 +1,5 @@
 package string_11.string_11_6;
 
-/**
- * 6.	Создать строку из повторяющейся последовательности: 123123123…
- * Далее – удалить из строки все «3», но кроме первой.
- * Реализовать программу двумя способами: с помощью методов String, с помощью методов StringBuilder.
- */
 public class Utils {
 
     public String createSequence(String string, int number) {

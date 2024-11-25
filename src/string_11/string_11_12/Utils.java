@@ -1,9 +1,5 @@
 package string_11.string_11_12;
 
-/**
- * 12.	Дано предложение. Получить массив слов, полученных из строки (подсказка: метод split).
- */
-
 public class Utils {
     public void splitSentenceToWords(String sentence){
         int countSpaces = 0;
